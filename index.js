@@ -19,6 +19,10 @@ app.use(function(req, res, next) {
 app.use(express.json());
 app.use(bodyParser.urlencoded({extended:true}))
 
+app.get('/',(req, res)=>{
+    res.send('your app is running')
+})
+
 app.get('/getAllTrips',(req,res)=>{
     trips.getAllTrips().then(trips=>{
         res.status(200).send(trips)
