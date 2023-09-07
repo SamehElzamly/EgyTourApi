@@ -39,6 +39,7 @@ app.get('/discover/:tripId',(req,res)=>{
 })
 
 app.post('/addTrip',(req,res)=>{
+    console.log(req.body);
     const trip=req.body
     trips.addTrip(trip).then(()=>res.send('success'))
 })

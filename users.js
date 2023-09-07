@@ -3,7 +3,7 @@ const mongoClient=require('mongodb').MongoClient;
 class usersController{
     constructor(){
         this.db=null;
-        this.url='mongodb://127.0.0.1:27017/egyTour'
+        this.url='mongodb+srv://sameh:FJozl74GEoiwefcY@cluster0.zlprvyt.mongodb.net/'
     }
 
     connectToDb(){
