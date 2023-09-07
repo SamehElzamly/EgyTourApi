@@ -115,4 +115,4 @@ app.get('/getRates',(req,res)=>{
 app.post('/postRate',(req,res)=>{
     rates.postRate(req.body.userName,req.body.rate).then(response=>res.send(response)).catch(err=>res.send(err))
 })
-app.listen(4000)
+app.listen(4000 || process.env.PORT)
