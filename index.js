@@ -3,6 +3,7 @@ const tripsController = require('./tripsController');
 const usersController=require('./users');
 const ratesController=require('./ratesController')
 const cors=require('cors');
+const axios=require('axios')
 const bodyParser=require('body-parser')
 
 const app=express()
@@ -11,8 +12,9 @@ const users=new usersController;
 const rates=new ratesController;
 
 app.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "http://localhost:3000");
+    res.header("Access-Control-Allow-Origin", "https://egy-tour-api.vercel.app");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+
     next();
 });
 
@@ -39,7 +41,6 @@ app.get('/discover/:tripId',(req,res)=>{
 })
 
 app.post('/addTrip',(req,res)=>{
-    console.log(req.body);
     const trip=req.body
     trips.addTrip(trip).then(()=>res.send('success'))
 })
