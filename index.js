@@ -22,10 +22,7 @@ app.use(express.json());
 app.use(bodyParser.urlencoded({extended:true}))
 
 app.get('/test',(req, res)=>{
-    axios.get('https://egy-tour-api.vercel.app/test',{headers:req.headers})
-    .then(response=>{
         res.send('hi')
-    }).catch(err=>{res.send(err)})
 })
 
 app.get('/getAllTrips',(req,res)=>{
