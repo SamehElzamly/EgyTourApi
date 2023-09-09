@@ -71,13 +71,9 @@ app.get('/getAllUsers',(req,res)=>{
 
 app.post('/newUser',(req,res)=>{
     const user=req.body
-    axios.post('https://egy-tour-api.vercel.app/newUser',{headers:req.headers})
-    .then(()=>{
-            users.newUser(user).then(()=>{
+    users.newUser(user).then(()=>{
         res.send('success')
     }).catch(err=>res.send(err))
-    }).catch(err=>{res.send(err)})
-
 })
 
 app.post('/logIn',(req,res)=>{
