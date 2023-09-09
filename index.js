@@ -14,7 +14,7 @@ const rates=new ratesController;
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "https://egy-tour-api.vercel.app");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-
+    req.headers['host']=req.hostname
     next();
 });
 
@@ -22,7 +22,10 @@ app.use(express.json());
 app.use(bodyParser.urlencoded({extended:true}))
 
 app.get('/test',(req, res)=>{
-    res.json({msg:"hello your app is running"})
+    axios.get('https://egy-tour-api.vercel.app/test',{headers:req.headers})
+    .then(response=>{
+        res.send('hi')
+    }).catch(err=>{res.send(err)})
 })
 
 app.get('/getAllTrips',(req,res)=>{
