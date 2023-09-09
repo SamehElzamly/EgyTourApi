@@ -72,8 +72,8 @@ app.get('/getAllUsers',(req,res)=>{
 app.post('/newUser',(req,res)=>{
     const user=req.body
     users.newUser(user).then(()=>{
-        res.redirect('/')
-    })
+        res.send('success')
+    }).catch(err=>res.send(err))
 })
 
 app.post('/logIn',(req,res)=>{
