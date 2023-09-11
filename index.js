@@ -63,6 +63,7 @@ app.get('/getAllUsers',(req,res)=>{
     users.getAllUsers().then(users=>{
         res.send(users)
     })
+    .catch(err=>res.send(err))
 })
 
 app.post('/newUser',(req,res)=>{
