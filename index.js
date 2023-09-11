@@ -41,8 +41,7 @@ app.get('/discover/:tripId',(req,res)=>{
 })
 
 app.post('/addTrip',(req,res)=>{
-    const trip=req.body
-    trips.addTrip(trip).then(()=>res.send('success'))
+    trips.addTrip(req.body).then(()=>res.send('success')).catch(err=>res.send(err))
 })
 
 app.delete('/delTrip',(req,res)=>{
