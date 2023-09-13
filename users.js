@@ -38,15 +38,16 @@ class usersController{
 
     async getAllUsers(){
         console.log(1);
-            try{ 
-                const db=await this.connectToDb()
-                console.log(2);
-                const users=await db.collection('users').find({}).toArray()
-                return users
+        let data=[]
+        await this.connectToDb().then(()=>{
+            console.log(2);
+            data=this.db.collection('users').find({}).toArray()
+            })
+        return data
         }
         catch(err)
-        {console.log(err) }
-    }
+        {return(err) 
+        }
 
     async getDataById(userId){
         const id=new ObjectId(userId)

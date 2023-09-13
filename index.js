@@ -61,10 +61,10 @@ app.put('/updatePrice',(req,res)=>{
 
 app.get('/getAllUsers',(req,res)=>{
     users.getAllUsers().then(users=>{
-        // res.status(200).send(users)
-        res.status(200).send('hi')
+        res.send(users)
+        // res.send('hi')
     })
-    .catch(err=>res.send('err')).finally(()=>res.send('bye'))
+    .catch(err=>console.log(err))
 })
 
 app.post('/newUser',(req,res)=>{
