@@ -22,7 +22,7 @@ app.use(express.json());
 app.use(bodyParser.urlencoded({extended:true}))
 
 app.get('/test',(req, res)=>{
-        res.send('hi')
+        res.send(process.env.PORT)
 })
 
 app.get('/getAllTrips',(req,res)=>{
@@ -62,9 +62,8 @@ app.put('/updatePrice',(req,res)=>{
 app.get('/getAllUsers',(req,res)=>{
     users.getAllUsers().then(users=>{
         res.send(users)
-        // res.send('hi')
     })
-    .catch(err=>console.log(err))
+    .catch(err=>res.send(err))
 })
 
 app.post('/newUser',(req,res)=>{
