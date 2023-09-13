@@ -37,13 +37,15 @@ class usersController{
     }
 
     async getAllUsers(){
+        console.log(1);
             try{ 
                 const db=await this.connectToDb()
+                console.log(2);
                 const users=await db.collection('users').find({}).toArray()
                 return users
         }
         catch(err)
-        {return err }
+        {console.log(err) }
     }
 
     async getDataById(userId){
