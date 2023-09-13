@@ -22,7 +22,7 @@ app.use(express.json());
 app.use(bodyParser.urlencoded({extended:true}))
 
 app.get('/test',(req, res)=>{
-        res.send(process.env.PORT)
+        res.send(`=>${process.env.PORT}<=`)
 })
 
 app.get('/getAllTrips',(req,res)=>{
