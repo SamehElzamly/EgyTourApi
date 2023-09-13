@@ -61,8 +61,8 @@ app.put('/updatePrice',(req,res)=>{
 
 app.get('/getAllUsers',(req,res)=>{
     users.getAllUsers().then(users=>{
-        res.send(users)
-        res.send('hi')
+        // res.status(200).send(users)
+        res.status(200).send('hi')
     })
     .catch(err=>res.send('err'))
 })
