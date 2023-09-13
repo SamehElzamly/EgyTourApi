@@ -64,7 +64,7 @@ app.get('/getAllUsers',(req,res)=>{
         // res.status(200).send(users)
         res.status(200).send('hi')
     })
-    .catch(err=>res.send('err'))
+    .catch(err=>res.send('err')).finally(()=>res.send('bye'))
 })
 
 app.post('/newUser',(req,res)=>{
