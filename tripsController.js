@@ -24,7 +24,7 @@ class tripsController{
         await this.connectToDb().then(()=>{
             this.db.collection('trips').insertOne(trip)
         })
-        .catch(err=>{console.log( err)} )
+        .catch(err=>{return( err)} )
     }
 
     async removeTrip(tripName,tripType){
