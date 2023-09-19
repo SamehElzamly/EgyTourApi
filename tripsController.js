@@ -49,14 +49,14 @@ class tripsController{
     }
 
     async getAllTrips() {
-    try {
-        await this.connectToDb();
-        const tripsCollection = this.db.collection("trips");
-        const trips = await tripsCollection.find({}).toArray();
-        return trips;
-    } catch (err) {
-        throw err;
-    }
+        await this.connectToDb().then(()=>{
+            const tripsCollection = this.db.collection("trips");
+            const trips = tripsCollection.find({}).toArray();
+            return trips;
+        })
+    .catch(err=>{
+        return (err)
+    })
     }
     async getTripsAccordingToLocation(location) {
     try {
