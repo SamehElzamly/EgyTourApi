@@ -1,19 +1,22 @@
 const { ObjectId } = require('mongodb');
-
+const http=require('http');
+const { log } = require('console');
 const mongoClient=require('mongodb').MongoClient;
 
 class tripsController{
     constructor(){
         this.db=null;
-        this.url='mongodb+srv://sameh:FJozl74GEoiwefcY@cluster0.zlprvyt.mongodb.net/'
+        this.url='mongodb+srv://egytour0:fvSrAe030lU66v3m@cluster0.c4mccsi.mongodb.net/'
+        // this.url='mongodb://21a8beedfb4acea9d88aac47b3ad6feb:07920589@mongodb:27017/21a8beedfb4acea9d88aac47b3ad6feb'
     }
     async connectToDb(){
             await mongoClient.connect(this.url,{useNewUrlParser: true,useUnifiedTopology: true}).then(data=>{
                 this.db=data.db('egyTour')
+                console.log('connect');
                 return
             })
             .catch(err=>{
-                return(err);
+                console.log(err);
             })
     }
 
@@ -21,7 +24,7 @@ class tripsController{
         await this.connectToDb().then(()=>{
             this.db.collection('trips').insertOne(trip)
         })
-        .catch(err=>{return err} )
+        .catch(err=>{console.log( err)} )
     }
 
     async removeTrip(tripName,tripType){
